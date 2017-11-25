@@ -8,12 +8,12 @@
         document.body.appendChild(renderer.domElement);
         
         camera.position.z = 60;
-        camera.position.y = 10;    
+        camera.position.y = 0;    
     
         let loader = new THREE.TextureLoader();
 
-        loader.load('public/basket.jpg', function(texture){
-            let planeGeometry = new THREE.PlaneGeometry(300,250);
+   /*    loader.load('public/blanco.jpg', function(texture){
+            let planeGeometry = new THREE.PlaneGeometry(100,100);
             planeGeometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
             let groundMaterial = new THREE.MeshPhongMaterial({
                 map: texture,
@@ -22,7 +22,7 @@
             let plane = new THREE.Mesh(planeGeometry, groundMaterial);
             plane.receiveShadow  = true;
             scene.add(plane);
-            });
+            });*/
 
 //triangulo
        var geometry = new THREE.CylinderBufferGeometry( .2, 6, 15, 30 );
