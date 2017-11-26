@@ -82,10 +82,7 @@
        scene.add(nube5);
 // Agua
 // Luces
-       let pointLight = new THREE.PointLight(0x656565);//luz puntual
-        pointLight.position.y = 60;
-        pointLight.position.z = 20; 
-        pointLight.position.z = 20;
+       let pointLight = new THREE.PointLight(0x959595);//luz puntual
 
         cylinder.position.set(0,10,0);
         tronco.position.set(0,0,0);
@@ -104,6 +101,13 @@
             
         let controls = new THREE.OrbitControls(camera, renderer.domElement);
         
+
+        var geometry = new THREE.SphereGeometry( 6, 10, 10, 60 );
+        var material = new THREE.MeshBasicMaterial( {color: 0xffffff, wireframe: !true} );// Material brillante 
+        var sol = new THREE.Mesh( geometry, material );
+        sol.receiveShadow = true;//en verdadero si se supone que el objeto recibirá sombras.
+        sol.castShadow = true; //en verdadero si el objeto tapa la luz, por lo que proyecta una sombra. 
+        scene.add(sol);
 
         function loop(){
             requestAnimationFrame(loop);
@@ -140,6 +144,23 @@
                 Math.abs( Math.cos( timer * 0 ) ) * 20 + 25,
                 Math.sin( timer * 0.05 ) * 30
             );
+            sol.position.set(
+                Math.cos( timer * 0.3 ) * 90,
+                Math.abs( Math.cos( timer * 0.3 ) ) * 50 + 5,
+                Math.sin( timer * 0.3 ) * 65
+            );
+            pointLight.position.set(
+                Math.cos( timer * 0.3 ) * 90,
+                Math.abs( Math.cos( timer * 0.3 ) ) * 50 + 5,
+                Math.sin( timer * 0.3 ) * 65
+            );
+            
+            /*
+            camera.position.set(
+                Math.cos( timer * 0.02 ) * 40,
+                Math.abs( Math.cos( timer * 0 ) ) * 20 + 50,
+                Math.sin( timer * 0.02 ) * 60 + 70
+            );*/
             
             //cylinder.position.y += Math.sin(time)*5;
            // directionalLight.position.x += Math.random() - 0.4;
